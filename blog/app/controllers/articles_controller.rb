@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
   end
 
   private
-    def article_params
-      params.require(:article).permit(:title, :text)
-    end
+  def article_params
+    params.require(:article).permit(:title, :text)
+  end
 end
