@@ -51,3 +51,20 @@ user.destroy
 class User < ActiveRecord::Base
   validates :name, presence: true
 end
+
+# Migrations
+class CreatePublications < ActiveRecord::Migrations
+  def change
+    create_table :publications do |t|
+      t.string :title
+      t.text :description
+      t.references :publication_type
+      t.integer :pulisher_id
+      t.string :publishr_type
+      t.boolean :single_issus
+
+      t.timestamps
+    end
+    add_index :publications, :publication_type_id
+  end
+end
