@@ -46,3 +46,8 @@ User.update_all "max_login_attempts = 3, must_change_password = 'true'"
 # Delete
 user = User.find_by(name: 'David')
 user.destroy
+
+# Validations
+class User < ActiveRecord::Base
+  validates :name, presence: true
+end
