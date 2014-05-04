@@ -65,5 +65,47 @@
 <%= color_field(:user, :favorite_color) %><br/>
 <%= time_field(:task, :started_at) %><br/>
 <%= number_field(:product, :price, in: 1.0..20.0, step: 0.5) %><br/>
+
+<!-- Binding a Form to an Object -->
+<%= form_for @product, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :price %>
+  <%= f.submit "Create" %>
+<% end %><br/>
+
+<!-- How do forms with PATCH work -->
+<%= form_tag("/search", method: "patch") %>
+
+<!-- The Select and Option Tags -->
+<%= options_for_select([['Lisbon', 1], ['Madrid', 2]]) %>
+<%= select_tag(:city_id, options_for_select([['Lisbon', 1], ['Madrid', 2]])) %><br/>
+
+<%= select(:product, :name, [['Lisbon', 1], ['Madrid', 2]]) %><br/>
+
+<!-- Option Tags from a Collection of Arbitrary Objects -->
+<% products_array = Product.all.map { |product| [product.name, product.id] } %>
+<%= options_for_select(products_array) %>
+
+<!-- Time Zone and Country Selec -->
+<%= time_zone_select(:person, :time_zone) %><br/>
+
+
+<!-- Date and Time Form Helpers -->
+<%= select_date Date.today, prefix: :start_date %><br/>
+
+<!-- Individual Components -->
+<%= select_year(2009) %>
+<%= select_year(Time.now) %><br/>
+
+<!-- Uploading Files -->
+<%= form_tag(multipart: true) do %>
+  <%= file_field_tag 'product' %>
+<% end %>
+
+<%= form_for @product do |f| %>
+  <%= f.file_field :product %>
+<% end %>
+
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
