@@ -22,5 +22,48 @@
   <td><%= @product.name %></td>
 <% end %>
 
+<!-- basic form helper form_tag -->
+<%= form_tag do %>
+  Form contents
+<% end %>
+
+<!-- A Generic Search Form -->
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<!-- Checkboxes -->
+<%= check_box_tag(:pet_dog) %>
+<%= label_tag(:pet_dog, "I own a dog") %>
+<%= check_box_tag(:pet_cat) %>
+<%= label_tag(:pet_cat, "I own a cat") %>
+<br/>
+
+<!-- Radio Buttons -->
+<%= radio_button_tag(:age, "child") %>
+<%= label_tag(:age_child, "I am younger than 21") %>
+<%= radio_button_tag(:age, "adult") %>
+<%= label_tag(:age_adult, "I'm over 21") %>
+<br/>
+
+
+<!-- Other Helpers of Interest -->
+<%= text_area_tag(:message, "Hi, nice site", size: "24x6") %><br/>
+<%= password_field_tag(:password) %><br/>
+<%= hidden_field_tag(:parent_id, "5") %><br/>
+<%= search_field(:user, :name) %><br/>
+<%= telephone_field(:user, :phone) %><br/>
+<%= date_field(:user, :born_on) %><br/>
+<%= datetime_field(:user, :meeting_time) %><br/>
+<%= datetime_local_field(:user, :graduation_day) %><br/>
+<%= month_field(:user, :birthday_month) %><br/>
+<%= week_field(:user, :birthday_week) %><br/>
+<%= url_field(:user, :homepage) %><br/>
+<%= email_field(:user, :address) %><br/>
+<%= color_field(:user, :favorite_color) %><br/>
+<%= time_field(:task, :started_at) %><br/>
+<%= number_field(:product, :price, in: 1.0..20.0, step: 0.5) %><br/>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
