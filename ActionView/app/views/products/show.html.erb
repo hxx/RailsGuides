@@ -10,5 +10,17 @@
   <%= @product.price %>
 </p>
 
+<%= content_tag_for(:tr, @product) do %>
+  <td><%= @product.name %></td>
+<% end %>
+
+<%= content_tag_for(:tr, @product, class: "frontpage") do %>
+  <td><%= @product.name %></td>
+<% end %>
+
+<%= div_for(@product) do %>
+  <td><%= @product.name %></td>
+<% end %>
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

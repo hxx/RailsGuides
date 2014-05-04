@@ -22,6 +22,10 @@
   </tbody>
 </table>
 
+<%= content_tag_for(:tr, @products) do |product| %>
+  <td><%= product.name %></td>
+<% end %>
+
 <br>
 
 <%= link_to 'New Product', new_product_path %>
