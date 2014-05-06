@@ -35,7 +35,10 @@ Rails.application.routes.draw do
   # a single case
   resources :ccc, path: '/admin/ccc'
 
-
+  # Nested routes
+  resources :magazines do
+    resources :ads
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
