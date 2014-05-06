@@ -64,6 +64,20 @@ Rails.application.routes.draw do
     end
   end
 
+  # scope shallow_path
+  scope shallow_path: "sekret" do
+    resources :posts do
+      resources :comments, shallow: true
+    end
+  end
+
+  # scope shallow_prefix
+  scope shallow_prefix: "sekret" do
+    resources :posts do
+      resources :comments, shallow: true
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
