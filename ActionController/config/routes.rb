@@ -186,6 +186,17 @@ Rails.application.routes.draw do
   resources :photos, only: [:index, :show]
   resources :photos, except: :destroy
 
+
+  # Inspecting and Testing Routes
+  # Listing Existing Routes
+  # http://localhost:3000/rails/info/routes
+  # rake routes
+
+  # Testing Routes
+  # assert_generates
+  # assert_recognizes
+  # assert_routing
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
