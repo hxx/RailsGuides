@@ -17,6 +17,11 @@ Rails.application.routes.draw do
   # It's has another route:
   # geocoder_index  GET    /geocoder(.:format)          geocoder#index
 
+  # namespase
+  namespace :admin do
+    resources :posts, :comments
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
