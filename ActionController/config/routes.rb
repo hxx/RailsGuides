@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   # edit_client_path(:id)   returns   /client/:id/edit
   # client_path(:id)        returns   /clients/:id
 
+  # Defining Multiple Resources at the Same Time
+  resources :photos, :books, :videos
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
