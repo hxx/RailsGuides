@@ -42,6 +42,28 @@ Rails.application.routes.draw do
 
   # Resources should never be nested more than 1 level deep.
 
+  # Shallow Nesting
+  # resources :post do
+  #   resources :comments, only: [:index, :new, :create]
+  # end
+  # resources :comments, only: [:show, :edit, :update, :destroy]
+  resources :posts do
+    resources :comments, shallow: true
+  end
+
+  # resources :posts, shallow: true do
+  #   resources :comments
+  #   resources :quotes
+  #   resources :drafts
+  # end
+  shallow do
+    resources :posts do
+      resources :comments
+      resources :quotes
+      resources :drafts
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
