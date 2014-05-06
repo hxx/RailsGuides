@@ -10,6 +10,13 @@ Rails.application.routes.draw do
   # Defining Multiple Resources at the Same Time
   resources :photos, :books, :videos
 
+  # Singular Resources
+  resources :geocoder
+  # RailsGUides says this will create six different routes in your application
+  # but I see that create seven different routes too through rake routes
+  # It's has another route:
+  # geocoder_index  GET    /geocoder(.:format)          geocoder#index
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
