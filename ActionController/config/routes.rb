@@ -32,6 +32,9 @@ Rails.application.routes.draw do
     resources :posts, :comments
   end
 
+  # a single case
+  resources :ccc, path: '/admin/ccc'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
