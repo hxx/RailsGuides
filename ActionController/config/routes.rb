@@ -27,6 +27,11 @@ Rails.application.routes.draw do
     resources :posts, :comments
   end
 
+  # scope
+  scope '/admin' do
+    resources :posts, :comments
+  end
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
