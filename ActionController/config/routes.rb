@@ -93,6 +93,32 @@ Rails.application.routes.draw do
     concerns :commentable
   end
 
+
+  # Adding Member Routes
+  resources :photos do
+    member do
+      get 'preview'
+    end
+  end
+  # resources :photos do
+  #   get 'preview', on: :member
+  # end
+
+  # Adding Collection Routes
+  resources :photos do
+    collection do
+      get 'search'
+    end
+  end
+  # resources :photos do
+  #   get 'search', on: :collection
+  # end
+
+  # Adding Routes for Additional New Actions
+  resources :comments do
+    get 'preview', on: :new
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
