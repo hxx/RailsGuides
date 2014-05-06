@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   resources :clients
 
+  # some helpers for resources route
+  # clients_path            returns   /clients
+  # new_client_path         returns   /clients/new
+  # edit_client_path(:id)   returns   /client/:id/edit
+  # client_path(:id)        returns   /clients/:id
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
