@@ -158,6 +158,34 @@ Rails.application.routes.draw do
   root to: 'pages#main'
   # root 'pages#main' # shortcut for the above
 
+
+  # Customizing Resourceful Routes
+  # Specifying a Controller to Use
+  resources :photos, controller: 'images'
+  resources :user_permissions, controller: 'admin/user_permissions'
+
+  # Specifying Constraints
+  resources :photos, constraints: {id: /[A-Z][A-Z][0-9]+/}
+
+  # Overriding the Named Helpers
+  resources :photos, as: 'images'
+
+  # Overriding the new and edit Segments
+  resources :photos, path_names: { new: 'make', edit: 'change' }
+
+  # Prefixing the Named Route Helpers
+  scope 'admin' do
+    resources :photos, as: 'admin_photos'
+  end
+
+  scope 'admin', as: 'admin' do
+    resources :accounts, :photos
+  end
+
+  # Restricting the Routes Created
+  resources :photos, only: [:index, :show]
+  resources :photos, except: :destroy
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
