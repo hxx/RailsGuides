@@ -78,6 +78,21 @@ Rails.application.routes.draw do
     end
   end
 
+  # routing concerns
+  concern :commentable do
+    resources :comments
+  end
+  resources :messages, concerns: :commentable
+
+  concern :image_attachable do
+    resources :images, only: :index
+  end
+  resources :posts, concerns: [:commentable, :image_attachable]
+
+  namespace :posts do
+    concerns :commentable
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
