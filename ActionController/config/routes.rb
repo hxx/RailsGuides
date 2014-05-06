@@ -119,6 +119,45 @@ Rails.application.routes.draw do
     get 'preview', on: :new
   end
 
+
+  # Some Non-Resourceful Routes
+  # Bound Parameters
+  get ':controller(/:action(/:id))'
+
+  # Dynamic Segments
+  get ':controller/:action/:id/:user_id'
+
+  # Static Segments
+  get ':controller/:action/:id/with_user/:user_id'
+
+  # Defining Defaults
+  get 'photos/:id', to: 'photos#show'
+
+  # Naming Routes
+  get 'exit', to: 'sessions#destroy', as: :logout
+  get ':username', to: 'users#show', as: :user
+
+  # Segment Constraints
+  get '/:id', to: 'posts#show', constraints: { id: /\d.+/ }
+  get '/:username', to: 'users#show'
+
+  # Request-Based Constraints
+  namespace :admin do
+    constraints subdomain: 'admin' do
+      resources :photos
+    end
+  end
+
+  # Some Redirection
+  get '/stories', to: redirect('/posts')
+  get '/stories/:name', to: redirect('/posts/%{name}')
+  get '/stories/:name', to: redirect {|path_params, req| "/posts/#{path_params[:name].pluralize}" }
+  get '/stories', to: redirect {|path_params, req| "/posts/#{req.subdomain}" }
+
+  # Using Root
+  root to: 'pages#main'
+  # root 'pages#main' # shortcut for the above
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
