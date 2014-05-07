@@ -11,12 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140507132103) do
+ActiveRecord::Schema.define(version: 20140507143102) do
+
+  create_table "another_products", force: true do |t|
+    t.string "name"
+    t.string "part_number"
+  end
 
   create_table "customers_products", id: false, force: true do |t|
     t.integer "customer_id", null: false
     t.integer "product_id",  null: false
   end
+
+  create_table "examples", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "examples", ["name"], name: "index_examples_on_name"
+
+  create_table "overridings", force: true do |t|
+    t.string  "part_number"
+    t.decimal "price"
+    t.integer "user_id"
+  end
+
+  add_index "overridings", ["user_id"], name: "index_overridings_on_user_id"
 
   create_table "products", force: true do |t|
     t.string   "name"
