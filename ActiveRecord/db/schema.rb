@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140502032901) do
+ActiveRecord::Schema.define(version: 20140507132103) do
 
   create_table "customers_products", id: false, force: true do |t|
     t.integer "customer_id", null: false
@@ -31,5 +31,18 @@ ActiveRecord::Schema.define(version: 20140502032901) do
 
   add_index "products", ["supplier_id", "supplier_type"], name: "index_products_on_supplier_id_and_supplier_type"
   add_index "products", ["user_id"], name: "index_products_on_user_id"
+
+  create_table "publications", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "publication_type_id"
+    t.integer  "publisher_id"
+    t.string   "publisher_type"
+    t.boolean  "single_issue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publications", ["publication_type_id"], name: "index_publications_on_publication_type_id"
 
 end
