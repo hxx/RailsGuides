@@ -11,4 +11,8 @@ class Person < ActiveRecord::Base
   # confirmation
   validates :email, confirmation: true
   validates :email_confirmation, presence: true
+
+  # exclusion
+  validates :subdomain, exclusion: { in: %w(www us ca jp),
+    message: "%{value} is reserved."}
 end
