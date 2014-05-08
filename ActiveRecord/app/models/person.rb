@@ -40,4 +40,8 @@ class Person < ActiveRecord::Base
     too_short: "must have at least %{count} words"
     too_long: "must have at most %{count} words"
   }
+
+  # numericality
+  validates :points, numericality: true
+  validates :games_played, numericality: { only_integer: true }
 end
