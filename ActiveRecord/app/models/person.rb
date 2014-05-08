@@ -16,6 +16,10 @@ class Person < ActiveRecord::Base
   validates :subdomain, exclusion: { in: %w(www us ca jp),
     message: "%{value} is reserved."}
 
+  # inclusion
+  validates :size, inclusion: { in: %w(small medium large),
+    message: "%{value} is not a valid size"}
+
   # format
   validates :legacy_code, format: { with: /\A[a-zA-Z]+\z/,
     message: "only allows letters"}
