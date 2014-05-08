@@ -66,4 +66,13 @@ class Person < ActiveRecord::Base
 
   # on
   validates :email, uniqueness: true, on: :create
+
+  # errors
+  def a_method_used_for_validation_purposes
+    errors.add(:name, "cannot cotain the characters!")
+    # errors[:name] = "cannot cotain the characters!"
+    # errors[:base] << "This person is invalid because ..."
+  end
+
+
 end
