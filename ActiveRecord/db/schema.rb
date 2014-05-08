@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140507143102) do
+ActiveRecord::Schema.define(version: 20140508135450) do
 
   create_table "another_products", force: true do |t|
     t.string "name"
@@ -39,6 +39,13 @@ ActiveRecord::Schema.define(version: 20140507143102) do
   end
 
   add_index "overridings", ["user_id"], name: "index_overridings_on_user_id"
+
+  create_table "people", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "terms_of_service"
+  end
 
   create_table "products", force: true do |t|
     t.string   "name"
