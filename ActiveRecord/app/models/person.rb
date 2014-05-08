@@ -7,4 +7,8 @@ class Person < ActiveRecord::Base
   # validates_associated
   has_many :books
   validates_associated :books
+
+  # confirmation
+  validates :email, confirmation: true
+  validates :email_confirmation, presence: true
 end
