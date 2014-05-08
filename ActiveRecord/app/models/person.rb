@@ -47,4 +47,7 @@ class Person < ActiveRecord::Base
 
   # presence
   validates :name, :login, :email, presence: true
+
+  # absence
+  validates :name, :login, :email, absence: true
 end
