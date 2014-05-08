@@ -50,4 +50,8 @@ class Person < ActiveRecord::Base
 
   # absence
   validates :name, :login, :email, absence: true
+
+  # uniqueness
+  validates :email, uniqueness: true
+  validates :name, uniqueness: { case_sensitive: false }
 end
