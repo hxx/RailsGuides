@@ -54,4 +54,16 @@ class Person < ActiveRecord::Base
   # uniqueness
   validates :email, uniqueness: true
   validates :name, uniqueness: { case_sensitive: false }
+
+
+  # Common Validation Options
+  # allow_nil
+  valid :size, inclusion: { in: %w(small medium large),
+    message: "%w{value} is not a valid size" }, allow_nil: true
+
+  # allow_blank
+  validates :title, length: { is: 5 }, allow_blank: true
+
+  # on
+  validates :email, uniqueness: true, on: :create
 end
