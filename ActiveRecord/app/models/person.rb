@@ -15,4 +15,8 @@ class Person < ActiveRecord::Base
   # exclusion
   validates :subdomain, exclusion: { in: %w(www us ca jp),
     message: "%{value} is reserved."}
+
+  # format
+  validates :legacy_code, format: { with: /\A[a-zA-Z]+\z/,
+    message: "only allows letters"}
 end
