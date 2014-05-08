@@ -23,4 +23,21 @@ class Person < ActiveRecord::Base
   # format
   validates :legacy_code, format: { with: /\A[a-zA-Z]+\z/,
     message: "only allows letters"}
+
+  # length
+  validates :name, length: { minimum: 2 }
+  validates :bio, length: { maximum: 500 }
+  validates :password, length: { in: 6..20 }
+  validates :registration_number, length: { is: 6 }
+
+  validates :bio, length: { maximum: 1000,
+    too_long: "%{count} characters is the maximum allowed" }
+
+  validates :content, length: {
+    minimum: 300,
+    maximum: 400,
+    tokenizer: lambda { |str| str.scan(/\w+/) },
+    too_short: "must have at least %{count} words"
+    too_long: "must have at most %{count} words"
+  }
 end
