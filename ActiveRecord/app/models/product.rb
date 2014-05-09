@@ -8,4 +8,9 @@ class Product < ActiveRecord::Base
   after_find do |product|
     puts "You have found an object!"
   end
+
+  # after_touch
+  after_touch do |product|
+    puts "You have touched an object"
+  end
 end
