@@ -42,6 +42,14 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  def current_article
+    # This method is called several times per request, which means that the database is also called several times per request.
+    # @current_article = Article.find(params[:id])
+
+    # The important thing to note is the OR symbol. The first time the line above is called, the @current_article variable will be nil and so the database call will be made. For all subsequent calls to the same method, @current_article will contain the current user so the request to the database won’t be made. 
+    @current_article ||= Article.find(params[:id])
+  end
+
   private
   def article_params
     params.require(:article).permit(:title, :text)
