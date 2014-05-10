@@ -42,6 +42,10 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  def is_read_articles
+    @is_read_articles = Article.where("is_read = ?", true).order("created_at DESC")
+  end
+
   private
   def article_params
     params.require(:article).permit(:title, :text)
