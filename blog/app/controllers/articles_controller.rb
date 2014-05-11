@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  layout :user_layout
+
   def new
     @article = Article.new
   end
@@ -19,6 +21,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+    render layout: 'articles'
   end
 
   def edit
@@ -57,5 +60,15 @@ class ArticlesController < ApplicationController
   private
   def article_params
     params.require(:article).permit(:title, :text)
+  end
+
+  protected
+  def user_layout
+    # if current_user.is_admin?
+    if false
+      "admin"
+    else
+      "application"
+    end
   end
 end
