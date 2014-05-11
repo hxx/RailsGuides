@@ -12,6 +12,11 @@ class CommentsController < ApplicationController
     redirect_to article_path(@article)
   end
 
+  def index
+    @article = Article.find(params[:article_id])
+    @comments = @article.comments.find_no_spam
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:commenter, :body)
