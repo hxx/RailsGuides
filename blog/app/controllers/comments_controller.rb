@@ -13,7 +13,8 @@ class CommentsController < ApplicationController
   end
 
   def index
-    @comments = Comment.find_no_spam
+    @article = Article.find(params[:article_id])
+    @comments = @article.comments.find_no_spam
   end
 
   private
