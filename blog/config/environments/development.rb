@@ -40,8 +40,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    user_name:            'Settings.email.from',
-    password:             'Settings.email.from.password',
+    user_name:            'yellowstar520',
+    password:             ENV['GMAIL_PASS'],
     authentication:       'plain'
   }
   config.action_mailer.perform_deliveries = true
